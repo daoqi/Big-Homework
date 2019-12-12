@@ -1,0 +1,40 @@
+# Project: NewHomework
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o corelogic.o linklist.o menu.o mysqloperation.o
+LINKOBJ  = main.o corelogic.o linklist.o menu.o mysqloperation.o
+LIBS     = -L"D:/Dev-Cpp/MinGW64/lib" -L"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -L"D:/mysql-5.6.43-winx64/lib" -static-libgcc -lmysql
+INCS     = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = NewHomework.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+corelogic.o: corelogic.cpp
+	$(CPP) -c corelogic.cpp -o corelogic.o $(CXXFLAGS)
+
+linklist.o: linklist.cpp
+	$(CPP) -c linklist.cpp -o linklist.o $(CXXFLAGS)
+
+menu.o: menu.cpp
+	$(CPP) -c menu.cpp -o menu.o $(CXXFLAGS)
+
+mysqloperation.o: mysqloperation.cpp
+	$(CPP) -c mysqloperation.cpp -o mysqloperation.o $(CXXFLAGS)
